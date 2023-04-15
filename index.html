@@ -9,7 +9,8 @@
 <body>
     <script>
     
-        function getComputerChoice(){
+        
+    function getComputerChoice(){
             let computerChoice = Math.floor(Math.random()*3);
             if(computerChoice == 0){
                 return 'Rock';
@@ -18,14 +19,16 @@
             }else{
                 return 'Scissors';
             }
+            console.log(getComputerChoice);
         }
 
-        function getPlayerChoice(){
-            playerChoice = prompt('Pick: Rock / Paper / Scissors');
-            return playerChoice
-        }
+         function getPlayerChoice(){
+            let playerChoice = prompt('Pick: Rock / Paper / Scissors');
+            return playerChoice.toLowerCase();
+         }
 
-        function playRound(PlayerChoice,computerChoice){
+        function playRound(getPlayerChoice,getComputerChoice){
+            
             // If player picks rock
             if(playerChoice == 'rock' && computerChoice == 'Rock'){
                 return 'The game is a tie.';
@@ -39,7 +42,7 @@
                 return 'You win!';
             } else if(playerChoice == 'paper' && computerChoice == 'Paper'){
                 return 'The game is a tie.';
-            }else if(playerChoice=='paper' && computerChoice == 'Scissors'){
+            }else if(playerChoice =='paper' && computerChoice == 'Scissors'){
                 return 'You lose.';
             };
             // If player picks Scissors
@@ -50,14 +53,13 @@
             }else{
                 return 'The game is a tie.';
             };
-        
         }
 
-        const playerChoice=getPlayerChoice(); 
+        const playerChoice='rock';
         const computerChoice=getComputerChoice();
-        console.log(playerChoice.toLowerCase());
-        console.log(getComputerChoice());
-        console.log(playRound(playerChoice,computerChoice));
+        console.log(playerChoice);
+        console.log(computerChoice);
+        console.log(playRound());
     </script>
 </body>
 </html>
