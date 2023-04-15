@@ -4,11 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Rock / Paper / Scissors</title>
 </head>
 <body>
-    <input id="playerSelectionID"/>
-    <button>Submit</button>
-    <script src="./main.js"></script>
+    <script>
+    
+        function getComputerChoice(){
+            let computerChoice = Math.floor(Math.random()*3);
+            if(computerChoice == 0){
+                return 'Rock';
+            }else if(computerChoice == 1){
+                return 'Paper';
+            }else{
+                return 'Scissors';
+            }
+        }
+
+        function getPlayerChoice(){
+            playerChoice = prompt('Pick: Rock / Paper / Scissors');
+            return playerChoice
+        }
+
+        function playRound(PlayerChoice,computerChoice){
+            // If player picks rock
+            if(playerChoice == 'rock' && computerChoice == 'Rock'){
+                return 'The game is a tie.';
+            }else if(playerChoice =='rock' && computerChoice =='Paper'){
+                return 'You lose.';
+            }else if (playerChoice == 'rock' && computerChoice == 'Scissors'){
+                return 'You win!';
+            };
+            // If player picks paper
+            if(playerChoice == 'paper' && computerChoice == 'Rock'){
+                return 'You win!';
+            } else if(playerChoice == 'paper' && computerChoice == 'Paper'){
+                return 'The game is a tie.';
+            }else if(playerChoice=='paper' && computerChoice == 'Scissors'){
+                return 'You lose.';
+            };
+            // If player picks Scissors
+            if(playerChoice == 'scissors' && computerChoice == 'Rock'){
+                return 'You lose';
+            }else if(playerChoice == 'scissors' && computerChoice == 'Paper'){
+                return 'You win!';
+            }else{
+                return 'The game is a tie.';
+            };
+        
+        }
+
+        const playerChoice=getPlayerChoice(); 
+        const computerChoice=getComputerChoice();
+        console.log(playerChoice.toLowerCase());
+        console.log(getComputerChoice());
+        console.log(playRound(playerChoice,computerChoice));
+    </script>
 </body>
 </html>
