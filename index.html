@@ -64,17 +64,17 @@
         } else if (playerChoice == "scissors" && computerChoice == "Scissors") {
           return "The game is a tie.";
         } else {
-          return "yer";
+          return "Error?";
         }
       }
 
       function game(playRound) {
-        if (playerScore > computerScore) {
+        if (playerScore === 5) {
           return "The final result is: Win";
-        } else if (computerScore > playerScore) {
+        } else if (computerScore === 5) {
           return "The final result is: Loss";
         }else{
-            return 'The final result is: Tie'
+            return 'The final result is: Tie';
         }
       }
       playRound();
@@ -89,5 +89,15 @@
       console.log('player:',playerScore,'computer:',computerScore);
       console.log(game());
     </script>
+    <h1 style="text-align: center;">Rock, Paper, Scissors</h1>
+    <div class="rps-buttons" style="text-align: center" >
+      <button style="font-size: 30px;">Rock</button>
+      <button style="font-size: 30px;">Paper</button>
+      <button style="font-size: 30px;">Scissors</button>
+    </div>
+    <div style="text-align: center;">
+    <h3 class="player-score">Player Score:<span>0</span></h3>
+    <h3 class="computer-score">Computer Score:<span>0</span></h3>
+    </div>
   </body>
 </html>
