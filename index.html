@@ -1,103 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock / Paper / Scissors</title>
-  </head>
-  <body>
-    <script>
-      let playerScore = 0;
-      let computerScore = 0;
-
-      function getComputerChoice() {
-        let computerChoice = Math.floor(Math.random() * 3);
-
-        if (computerChoice == 0) {
-          let computerChoice = "Rock";
-          return computerChoice;
-        } else if (computerChoice == 1) {
-          let computerChoice = "Paper";
-          return computerChoice;
-        } else {
-          let computerChoice = "Scissors";
-          return computerChoice;
-        }
-      }
-
-      function getPlayerChoice() {
-        let playerChoice = prompt("Pick: Rock / Paper / Scissors");
-        return playerChoice.toLowerCase();
-      }
-
-      function playRound() {
-        const computerChoice = getComputerChoice();
-        const playerChoice = getPlayerChoice();
-        // If player picks rock
-        if (playerChoice === "rock" && computerChoice === "Rock") {
-          return "The game is a tie.";
-        } else if (playerChoice === "rock" && computerChoice === "Paper") {
-          computerScore++;
-          return "You lose.";
-        } else if (playerChoice === "rock" && computerChoice === "Scissors") {
-          playerScore++;
-          return "You win!";
-        }
-        // If player picks paper
-        else if (playerChoice == "paper" && computerChoice == "Rock") {
-          playerScore++;
-          return "You win!";
-        } else if (playerChoice == "paper" && computerChoice == "Paper") {
-          return "The game is a tie.";
-        } else if (playerChoice == "paper" && computerChoice == "Scissors") {
-          computerScore++;
-          return "You lose.";
-        }
-        // If player picks Scissors
-        else if (playerChoice == "scissors" && computerChoice == "Rock") {
-          computerScore++;
-          return "You lose.";
-        } else if (playerChoice == "scissors" && computerChoice == "Paper") {
-          playerScore++;
-          return "You win!";
-        } else if (playerChoice == "scissors" && computerChoice == "Scissors") {
-          return "The game is a tie.";
-        } else {
-          return "Error?";
-        }
-      }
-
-      function game(playRound) {
-        if (playerScore === 5) {
-          return "The final result is: Win";
-        } else if (computerScore === 5) {
-          return "The final result is: Loss";
-        }else{
-            return 'The final result is: Tie';
-        }
-      }
-      playRound();
-      console.log('player:',playerScore,'computer:',computerScore);
-      playRound();
-      console.log('player:',playerScore,'computer:',computerScore);
-      playRound();
-      console.log('player:',playerScore,'computer:',computerScore);
-      playRound();
-      console.log('player:',playerScore,'computer:',computerScore);
-      playRound();
-      console.log('player:',playerScore,'computer:',computerScore);
-      console.log(game());
-    </script>
-    <h1 style="text-align: center;">Rock, Paper, Scissors</h1>
-    <div class="rps-buttons" style="text-align: center" >
-      <button style="font-size: 30px;">Rock</button>
-      <button style="font-size: 30px;">Paper</button>
-      <button style="font-size: 30px;">Scissors</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock / Paper / Scissors</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="choices" style="text-align: center;">
+    <h1 style="color: blue;">Player Choice: <span id="player-choice">-</span></h1>
+    <h1 style="color: red;">Computer Choice: <span id="computer-choice">-</span></h1>
+    <h1><span id=result>-</span></h1>
+    <h1 id="final-result" style="display: none;"></h1>
+  </div>
+  <div class="rps-buttons, center" style="text-align: center" >
+    <div class="rps-buttons">
+      <button id='rock' style="font-size: 30px;">Rock</button>
+      <button id='paper' style="font-size: 30px;">Paper</button>
+      <button id='scissors' style="font-size: 30px;">Scissors</button>
     </div>
     <div style="text-align: center;">
-    <h3 class="player-score">Player Score:<span>0</span></h3>
-    <h3 class="computer-score">Computer Score:<span>0</span></h3>
+      <h3 class="player-score" style="color: blue;">Player Score: <span>0</span></h3>
+      <h3 class="computer-score" style="color: red;">Computer Score: <span>0</span></h3>
     </div>
-  </body>
+  </div>
+  <script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function getComputerChoice() {
+      let computerChoice = Math.floor(Math.random() * 3);
+
+      if (computerChoice == 0) {
+        return "Rock";
+      } else if (computerChoice == 1) {
+        return "Paper";
+      } else {
+        return "Scissors";
+      }
+    }
+
+    function playRound(playerChoice) {
+      const computerChoice = getComputerChoice();
+
+      // Update player and computer choices
+      document.getElementById("player-choice").textContent = playerChoice;
+      document.getElementById("computer-choice").textContent = computerChoice;
+
+      // Determine the outcome of the round
+      let result;
+      if (playerChoice === "rock" && computerChoice === "Rock") {
+        result = "The game is a tie.";
+      } else if (playerChoice === "rock" && computerChoice === "Paper") {
+        result = "You lose.";
+        computerScore++;
+      } else if (playerChoice === "rock" && computerChoice === "Scissors") {
+        result = "You win!";
+        playerScore++;
+      } else if (playerChoice === "paper" && computerChoice === "Rock") {
+        result = "You win!";
+        playerScore++;
+      } else if (playerChoice === "paper" && computerChoice === "Paper") {
+        result = "The game is a tie.";
+      } else if (playerChoice === "paper" && computerChoice === "Scissors") {
+        result = "You lose.";
+        computerScore++;
+      } else if (playerChoice === "scissors" && computerChoice === "Rock") {
+        result = "You lose.";
+        computerScore++;
+      } else if (playerChoice === "scissors" && computerChoice === "Paper") {
+        result = "You win!";
+        playerScore++;
+      } else if (playerChoice === "scissors" && computerChoice === "Scissors") {
+        result = "The game is a tie.";
+      }
+
+      // Update result display
+      document.getElementById("result").textContent = result;
+      
+      // Update scores on the page
+      document.querySelector(".player-score span").textContent = playerScore;
+      document.querySelector(".computer-score span").textContent = computerScore;
+      
+     // Check for game end
+     if (playerScore === 5 || computerScore === 5) {
+        showFinalResult(); // Show final result if one player wins
+      }
+    }
+
+    function game() {
+      if (playerScore > computerScore) {
+        return "The final result is: Win";
+      } else {
+        return "The final result is: Loss";
+      }
+    }
+    function showFinalResult() {
+  if (playerScore === 5) {
+    document.getElementById("final-result").textContent = "You Win!";
+  } else {
+    document.getElementById("final-result").textContent = "You Lose!";
+  }
+  document.getElementById("final-result").style.display = "block";
+  resetScores();
+}
+
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+  document.querySelector(".player-score span").textContent = playerScore;
+  document.querySelector(".computer-score span").textContent = computerScore;
+  document.getElementById("final-result").style.display = "none"; // Hide final result
+}
+
+    function playerChoice() {
+      function pickRock() {
+        playRound("rock");
+      }
+      
+      function pickPaper() {
+        playRound("paper");
+      }
+      
+      function pickScissors() {
+        playRound("scissors");
+      }
+      
+      document.getElementById("rock").addEventListener("click", pickRock);
+      document.getElementById("paper").addEventListener("click", pickPaper);
+      document.getElementById("scissors").addEventListener("click", pickScissors);
+    }
+
+    
+    playerChoice(); // Call the playerChoice function to set up event listeners
+  </script>
+</body>
 </html>
