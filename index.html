@@ -9,8 +9,8 @@
 </head>
 <body>
   <div id="choices" style="text-align: center;">
-    <h1 style="color: blue;">Player Choice: <span id="player-choice">-</span></h1>
-    <h1 style="color: red;">Computer Choice: <span id="computer-choice">-</span></h1>
+    <h1 style="color: blue;font-size: 3em;">Player Choice: <span id="player-choice">-</span></h1>
+    <h1 style="color: red;font-size: 3em;">Computer Choice: <span id="computer-choice">-</span></h1>
     <h1><span id=result>-</span></h1>
     <h1 id="final-result" style="display: none;"></h1>
   </div>
@@ -21,8 +21,8 @@
       <button id='scissors' style="font-size: 30px;">Scissors</button>
     </div>
     <div style="text-align: center;">
-      <h3 class="player-score" style="color: blue;">Player Score: <span>0</span></h3>
-      <h3 class="computer-score" style="color: red;">Computer Score: <span>0</span></h3>
+      <h3 class="player-score" style="color: blue; font-size: 3em;" >Player Score: <span>0</span></h3>
+      <h3 class="computer-score" style="color: red;font-size: 3em;">Computer Score: <span>0</span></h3>
     </div>
   </div>
   <script>
@@ -50,29 +50,29 @@
 
       // Determine the outcome of the round
       let result;
-      if (playerChoice === "rock" && computerChoice === "Rock") {
+      if (playerChoice === "Rock" && computerChoice === "Rock") {
         result = "The game is a tie.";
-      } else if (playerChoice === "rock" && computerChoice === "Paper") {
+      } else if (playerChoice === "Rock" && computerChoice === "Paper") {
         result = "You lose.";
         computerScore++;
-      } else if (playerChoice === "rock" && computerChoice === "Scissors") {
+      } else if (playerChoice === "Rock" && computerChoice === "Scissors") {
         result = "You win!";
         playerScore++;
-      } else if (playerChoice === "paper" && computerChoice === "Rock") {
+      } else if (playerChoice === "Paper" && computerChoice === "Rock") {
         result = "You win!";
         playerScore++;
-      } else if (playerChoice === "paper" && computerChoice === "Paper") {
+      } else if (playerChoice === "Paper" && computerChoice === "Paper") {
         result = "The game is a tie.";
-      } else if (playerChoice === "paper" && computerChoice === "Scissors") {
+      } else if (playerChoice === "Paper" && computerChoice === "Scissors") {
         result = "You lose.";
         computerScore++;
-      } else if (playerChoice === "scissors" && computerChoice === "Rock") {
+      } else if (playerChoice === "Scissors" && computerChoice === "Rock") {
         result = "You lose.";
         computerScore++;
-      } else if (playerChoice === "scissors" && computerChoice === "Paper") {
+      } else if (playerChoice === "Scissors" && computerChoice === "Paper") {
         result = "You win!";
         playerScore++;
-      } else if (playerChoice === "scissors" && computerChoice === "Scissors") {
+      } else if (playerChoice === "Scissors" && computerChoice === "Scissors") {
         result = "The game is a tie.";
       }
 
@@ -116,15 +116,15 @@ function resetScores() {
 
     function playerChoice() {
       function pickRock() {
-        playRound("rock");
+        playRound("Rock");
       }
       
       function pickPaper() {
-        playRound("paper");
+        playRound("Paper");
       }
       
       function pickScissors() {
-        playRound("scissors");
+        playRound("Scissors");
       }
       
       document.getElementById("rock").addEventListener("click", pickRock);
