@@ -11,7 +11,7 @@
   <div id="choices" style="text-align: center;">
     <h1 style="color: blue;font-size: 3em;">Player Choice: <span id="player-choice">-</span></h1>
     <h1 style="color: red;font-size: 3em;">Computer Choice: <span id="computer-choice">-</span></h1>
-    <h1><span id=result>-</span></h1>
+    <h1><span id=roundResult>-</span></h1>
     <h1 id="final-result" style="display: none;"></h1>
   </div>
   <div class="rps-buttons, center" style="text-align: center" >
@@ -77,7 +77,7 @@
       }
 
       // Update result display
-      document.getElementById("result").textContent = result;
+      document.getElementById("roundResult").textContent = result;
       
       // Update scores on the page
       document.querySelector(".player-score span").textContent = playerScore;
